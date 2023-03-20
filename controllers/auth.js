@@ -7,6 +7,8 @@ export const register = (req, res) => {
   const q = "SELECT * FROM users WHERE email = ? OR username = ?";
 
   db.query(q, [req.body.email, req.body.username], (err, data) => {
+
+    console.log("hola")
     if (err) return res.status(500).json(err);
     if (data.length) return res.status(409).json("User already exists!");
 
@@ -26,11 +28,12 @@ export const register = (req, res) => {
 
 export const login = (req, res) => {
   //CHECK USER
-
+  console.log("entre")
   const q = "SELECT * FROM users WHERE username = ?";
 
   db.query(q, [req.body.username], (err, data) => {
     if (err) return res.status(500).json(err);
+    console.log(err)
     if (data.length === 0) return res.status(404).json("User not found!");
 
     //Check password
@@ -44,6 +47,8 @@ export const login = (req, res) => {
 
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
     const { password, ...other } = data[0];
+
+    console.log("hola",other)
 
     res
       .cookie("access_token", token, {
