@@ -27,9 +27,41 @@ describe("GET /tasks", () => {
 
   test("should respond with a 200 status code", async () => {
     // Verificar si la conexión a la base de datos fue existosa antes de realizar la prueba
-
-    const response = await request(app).get("/").send();
+    const response = await request(app).get("/api/posts").send();
     expect(response.statusCode).toBe(200);
+    expect(response.body.length>0).toBe(true)
+  });
+
+
+
+
+
+ 
+
+  // Resto de las pruebas...
+});
+
+
+describe("Post /tasks", () => {
+  // Variable para almacenar el estado de la conexión
+
+ 
+
+  test("should post a new article", async () => {
+    // Verificar si la conexión a la base de datos fue existosa antes de realizar la prueba
+    const post =
+      {
+        title: "hola mundo",
+        desc: "como estan",
+        img: "mi foto",
+        cat: "anime",
+        date: "\"23-67-33\"",
+        uid: "2"
+      }
+    
+    const response = await request(app).post("/api/posts").send(post).set('Accept', 'application/json');
+    expect(response.statusCode).toBe(200);
+    
   });
 
   afterAll((done) => {
@@ -43,6 +75,10 @@ describe("GET /tasks", () => {
       done();
     });
   });
+  
+
+  
+
 
   // Resto de las pruebas...
 });
