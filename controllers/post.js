@@ -31,7 +31,7 @@ export const addPost = (req, res) => {
   // if (!token) return res.status(401).json("Not authenticated!");
 
   // jwt.verify(token, "jwtkey", (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
+    // if (err) return res.status(403).json("Token is not valid!");
 
     const q =
       "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`,`uid`) VALUES (?)";
@@ -42,7 +42,7 @@ export const addPost = (req, res) => {
       req.body.img,
       req.body.cat,
       req.body.date,
-      userInfo.id,
+      req.body.uid,
     ];
 
     db.query(q, [values], (err, data) => {

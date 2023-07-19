@@ -5,7 +5,7 @@ import mysql from "mysql"
   port:3306,
   user:"root",
   password:"12345" ,
-  database:"mynigth"
+  database:"blog"
 })
 
 // db.connect(function(err){
