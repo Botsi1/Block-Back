@@ -1,6 +1,6 @@
 import mysql from "mysql"
 
-export const db = mysql.createConnection({
+ export const db = mysql.createConnection({
   host:"localhost",
   port:3306,
   user:"root",
@@ -8,12 +8,14 @@ export const db = mysql.createConnection({
   database:"mynigth"
 })
 
-db.connect(function(err){
-  if(err){
-    throw err
-  }else{
-    console.log("Conexion existosa")
-  }
-})
+// db.connect(function(err){
+//   if(err){
+//     throw err
+//   }else{
+//     console.log("Conexion existosa")
+//   }
+// })
 
-db.end()
+
+
+
